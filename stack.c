@@ -7,10 +7,7 @@
  */
 void f_stack(stack_t **head, unsigned int counter)
 {
-	/* Cast unused parameters to void */
 	(void)head;
 	(void)counter;
-
-	/* Assign 0 to the lifi field of the bus structure */
 	bus.lifi = 0;
 }
