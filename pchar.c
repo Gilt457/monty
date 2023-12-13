@@ -11,7 +11,7 @@ void f_pchar(stack_t **head, unsigned int counter)
 	stack_t *top;
 
 	top = *head;
-	if (top == NULL) /* check if stack is empty */
+	if (top == NULL) 
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", counter);
 		fclose(bus.file);
@@ -19,7 +19,7 @@ void f_pchar(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	if (top->n < 0 || top->n > 127) /* check if value is a valid ASCII code */
+	if (top->n < 0 || top->n > 127) 
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", counter);
 		fclose(bus.file);
@@ -27,5 +27,5 @@ void f_pchar(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	printf("%c\n", top->n); /* print the character */
+	printf("%c\n", top->n); 
 }
