@@ -27,7 +27,6 @@ void f_mod(stack_t **head, unsigned int counter)
 		exit(EXIT_FAILURE);
 	}
 	temp = *head;
-	/* check if the top element is zero */
 	if (temp->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", counter);
@@ -36,10 +35,8 @@ void f_mod(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	/* calculate the modulus and assign it to the second element */
 	result = temp->next->n % temp->n;
 	temp->next->n = result;
-	/* remove the top element from the stack */
 	*head = temp->next;
 	free(temp);
 }
