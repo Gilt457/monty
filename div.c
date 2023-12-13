@@ -1,49 +1,40 @@
 #include "monty.h"
-
 /**
- * divide_top_two_elements - Divides the top two elements of the stack.
- * @stack_head: Pointer to the stack's head
- * @line_number: Line number in the file
- * Return: No return value
- */
-void divide_top_two_elements(stack_t **stack_head, unsigned int line_number)
+ * f_div - divides the top two elements of the stack.
+ * @head: stack head
+ * @counter: line_number
+ * Return: no return
+*/
+void f_div(stack_t **head, unsigned int counter)
 {
-	stack_t *current_node;
-	int stack_length = 0, division_result;
+	stack_t *h;
+	int len = 0, aux;
 
-	current_node = *stack_head;
-
-	/* Calculate the length of the stack */
-	while (current_node)
+	h = *head;
+	while (h)
 	{
-		current_node = current_node->next;
-		stack_length++;
+		h = h->next;
+		len++;
 	}
-
-	/* Check if the stack has less than two elements */
-	if (stack_length < 2)
+	if (len < 2)
 	{
-		fprintf(stderr, "L%d: cannot divide, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't div, stack too short\n", counter);
 		fclose(bus.file);
 		free(bus.content);
-		free_stack(*stack_head);
+		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-
-	current_node = *stack_head;
-
-	/* Check for division by zero */
-	if (current_node->n == 0)
+	h = *head;
+	if (h->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero\n", line_number);
+		fprintf(stderr, "L%d: division by zero\n", counter);
 		fclose(bus.file);
 		free(bus.content);
-		free_stack(*stack_head);
+		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-
-	division_result = current_node->next->n / current_node->n;
-	current_node->next->n = division_result;
-	*stack_head = current_node->next;
-	free(current_node);
+	aux = h->next->n / h->n;
+	h->next->n = aux;
+	*head = h->next;
+	free(h);
 }
