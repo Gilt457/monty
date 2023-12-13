@@ -36,10 +36,8 @@ void f_div(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	/* divide the second element by the first and store the result */
 	result = temp->next->n / temp->n;
 	temp->next->n = result;
-	/* remove the first element from the stack */
 	*head = temp->next;
 	free(temp);
 }
