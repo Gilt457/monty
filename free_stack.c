@@ -1,13 +1,10 @@
 #include "monty.h"
 
 /**
- * release_stack - Deallocates a stack_t linked list
- * @stack: Pointer to the head of the stack
- *
- * This function deallocates all nodes of a stack represented
- * as a linked list (stack_t).
+ * free_stack - deallocates a stack_t list
+ * @stack: pointer to the head of the stack
  */
-void release_stack(stack_t *stack)
+void free_stack(stack_t *stack)
 {
 	stack_t *temp;
 
