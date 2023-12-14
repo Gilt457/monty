@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * f_add - computes the sum of the top two nodes of the stack
  * @head: pointer to the head of the stack
@@ -11,12 +12,12 @@ void f_add(stack_t **head, unsigned int counter)
 	int sum = 0, size = 0;
 
 	temp = *head;
-	while (temp) 
+	while (temp)
 	{
 		temp = temp->next;
 		size++;
 	}
-	if (size < 2) 
+	if (size < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", counter);
 		fclose(bus.file);
@@ -25,8 +26,8 @@ void f_add(stack_t **head, unsigned int counter)
 		exit(EXIT_FAILURE);
 	}
 	temp = *head;
-	sum = temp->n + temp->next->n; 
-	temp->next->n = sum; 
-	*head = temp->next; 
-	free(temp); 
+	sum = temp->n + temp->next->n;
+	temp->next->n = sum;
+	*head = temp->next;
+	free(temp);
 }
