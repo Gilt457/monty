@@ -1,24 +1,24 @@
 #include "monty.h"
 /**
- * f_div - divides the second element of the stack by the first
- * @head: pointer to the head of the stack
- * @counter: line number of the instruction
- * Return: nothing
+ * f_div - performs division operation on the top two elements of the stack
+ * @head: pointer to the top of the stack
+ * @counter: line number of the current instruction
+ * Return: void
  */
 void f_div(stack_t **head, unsigned int counter)
 {
-	stack_t *temp;
-	int length = 0, result;
+	stack_t *node;
+	int len = 0, quotient;
 
-	temp = *head;
-	/* count the number of nodes in the stack */
-	while (temp)
+	node = *head;
+	/* loop through the stack and count the nodes */
+	while (node)
 	{
-		temp = temp->next;
-		length++;
+		node = node->next;
+		len++;
 	}
-	/* check if the stack has at least two elements */
-	if (length < 2)
+	/* verify that the stack has enough elements for division */
+	if (len < 2)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", counter);
 		fclose(bus.file);
@@ -26,9 +26,9 @@ void f_div(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	temp = *head;
-	/* check if the top element is zero */
-	if (temp->n == 0)
+	node = *head;
+	/* verify that the top element is not zero to avoid division by zero */
+	if (node->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", counter);
 		fclose(bus.file);
@@ -36,8 +36,8 @@ void f_div(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	result = temp->next->n / temp->n;
-	temp->next->n = result;
-	*head = temp->next;
-	free(temp);
+	quotient = node->next->n / node->n;
+	node->next->n = quotient;
+	*head = node->next;
+	free(node);
 }

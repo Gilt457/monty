@@ -1,17 +1,20 @@
 #include "monty.h"
-/**
-* free_stack - frees a doubly linked list
-* @head: head of the stack
-*/
-void free_stack(stack_t *head)
-{
-	stack_t *aux;
 
-	aux = head;
-	while (head)
+/**
+ * release_stack - Deallocates a stack_t linked list
+ * @stack: Pointer to the head of the stack
+ *
+ * This function deallocates all nodes of a stack represented
+ * as a linked list (stack_t).
+ */
+void release_stack(stack_t *stack)
+{
+	stack_t *temp;
+
+	while (stack != NULL)
 	{
-		aux = head->next;
-		free(head);
-		head = aux;
+		temp = stack;
+		stack = stack->next;
+		free(temp);
 	}
 }
